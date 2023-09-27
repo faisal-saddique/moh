@@ -19,8 +19,8 @@ import os
 # Load environment variables from .env file
 load_dotenv()
 
-st.set_page_config(page_title="FireBot", page_icon="🔥🚒")
-st.title("🔥🚒 FireBot")
+st.set_page_config(page_title="SortStay Bot", page_icon="🔥")
+st.title("🔥 SortStay Bot")
 
 
 
