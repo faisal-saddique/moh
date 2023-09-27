@@ -68,7 +68,7 @@ class PrintRetrievalHandler(BaseCallbackHandler):
 
     def on_retriever_end(self, documents, **kwargs):
         for idx, doc in enumerate(documents):
-            source = os.path.basename(doc.metadata["path"])
+            source = os.path.basename(doc.metadata["file_path"])
             self.status.write(f"**Document: {idx} | {source} | {doc.metadata['page']}**")
             self.status.markdown(doc.page_content)
         self.status.update(state="complete")
@@ -104,3 +104,4 @@ if user_query := st.chat_input(placeholder="Ask me anything!"):
         retrieval_handler = PrintRetrievalHandler(st.container())
         stream_handler = StreamHandler(st.empty())
         response = qa_chain(user_query, callbacks=[retrieval_handler, stream_handler])
+        st.success(response)
